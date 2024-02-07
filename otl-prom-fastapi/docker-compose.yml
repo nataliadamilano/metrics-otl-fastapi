@@ -1,0 +1,19 @@
+version: '2'
+services:
+  coin-api-otl-prom:
+    container_name: coin-api-otl-prom
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: 'on-failure'
+    ports:
+      - 6060:6060
+  prometheus:
+    image: prom/prometheus:latest
+    restart: always
+    volumes:
+      - C:\Users\Nati\Documents\Proyectos Nati\otl-prom-fastapi\prometheus.yml:/etc/prometheus/prometheus.yml
+    command: 
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - 9090:9090

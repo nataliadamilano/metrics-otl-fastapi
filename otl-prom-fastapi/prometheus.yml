@@ -1,0 +1,10 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: 'coin-api-otl-prom'
+    static_configs:
+      - targets: ['coin-api-otl-prom:6060']
+    relabel_configs:
+      - source_labels: ['fastapi_http_request_count_requests_total']
+        target_label: 'ardx_http_requests_total'

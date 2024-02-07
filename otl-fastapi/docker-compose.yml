@@ -1,0 +1,10 @@
+version: '2'
+services:
+  coin-api-otl:
+    container_name: coin-api-otl
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: 'on-failure'
+    ports:
+      - 5050:5050
